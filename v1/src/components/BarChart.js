@@ -22,12 +22,28 @@ ChartJS.register(
 const BarChart = ({ data, title, colors }) => {
 
   const getData = () => {
+    var labels = Object.keys(data);
+    var values = Object.values(data);
+    var sortedList = [];
+
+    labels.forEach((label, idx) => {
+      sortedList.push([label, values[idx]])
+    });
+
+    sortedList = sortedList.sort((a, b) => b[1] - a[1]);
+    
+    if (!colors) {
+      sortedList = sortedList.slice(0, 10);
+      labels = sortedList.map(item => item[0])
+      values = sortedList.map(item => item[1]);
+    }
+
     return {
-      labels: Object.keys(data),
+      labels,
       datasets: [
         {
           label: title,
-          data: Object.values(data),
+          data: values,
           backgroundColor: colors ? colors : 'blue'
         }
       ]
@@ -45,7 +61,7 @@ const BarChart = ({ data, title, colors }) => {
         title: {
           display: true,
           text: title,
-        },
+        }
       },
     };    
   }

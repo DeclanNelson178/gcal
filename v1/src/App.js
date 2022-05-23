@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 
 import ApiCalendar from 'react-google-calendar-api';
-import moment from 'moment';
 import DatePicker from 'react-date-picker';
+import Button from 'react-bootstrap/Button';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-import aggregateEvents from './helpers/dataAggregator';
 import DisplayData from './components/DisplayData';
 
-function App() {
+const App = () => {
 
   const [auth, setAuth] = useState(false);
   const [processed, setProcessed] = useState(false);
@@ -15,8 +17,6 @@ function App() {
   const [data, setData] = useState(false);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
-  const [eventMap, setEventMap] = useState({});
-  const [eventSet, setEventSet] = useState(new Set());
 
   const handleSignIn = (e) => {
     ApiCalendar.handleAuthClick();
@@ -53,29 +53,47 @@ function App() {
   }
 
   return (
-    <div className="App">
-      {!auth ? 
-        <button onClick={(e) => handleSignIn(e)}>Sign In</button> : 
-        <>
-          <button onClick={(e) => handleSignOut(e)}>Sign Out</button>
-          <div>
-            <p>Start Date:</p>
-            <DatePicker onChange={setStartDate} value={startDate}/>
-            <p>End Date (Inclusive): </p>
-            <DatePicker onChange={setEndDate} value={endDate}/>
-          </div>
-          <div>
-            <label>
-              <input type="checkbox" checked={includeDeleted} onChange={() => setIncludeDeleted(!includeDeleted)}/>
-              Include Deleted
-            </label>
-          </div>
-          <button onClick={(e) => getEvents()}>Process Calendar Data</button>
-        </>
-      }
-
+    <Container className='p-3'>
+      <h1>Google Calendar Visualization Tool</h1>
+      <Container className="p-5 bg-light rounded-3">
+        {!auth ? 
+          <Row>
+            <h2>You are not currently signed in.</h2>
+            <Button onClick={(e) => handleSignIn(e)} variant='primary'>Sign In With Google</Button>
+          </Row>
+          : 
+          <>
+            <Row>
+              <label>Start Date:</label>
+              <DatePicker onChange={setStartDate} value={startDate}/>
+            </Row>
+            <Row>
+              <label>End Date (Inclusive): </label>
+              <DatePicker onChange={setEndDate} value={endDate}/>
+            </Row>
+            <Row>
+              <Col>
+                <label>
+                  <input type="checkbox" checked={includeDeleted} onChange={() => setIncludeDeleted(!includeDeleted)} style={{"margin-right": "3px"}}/>
+                  Include Deleted
+                </label>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Button onClick={(e) => getEvents()} variant='primary'>Process Calendar Data</Button>
+              </Col>
+            </Row>
+            <Row style={{"margin-top": "5px"}}>
+              <Col>
+                <Button onClick={(e) => handleSignOut(e)} variant='secondary'>Sign Out</Button>
+              </Col>
+            </Row>
+          </>
+        }
+      </Container>
       {processed ? <DisplayData data={data}/>: <p></p>}
-    </div>
+    </Container>
   );
 }
 

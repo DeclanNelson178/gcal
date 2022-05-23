@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/esm/Row';
 
 import { aggregateEvents, aggregateColors } from '../helpers/dataAggregator';
 import BarChart from './BarChart';
@@ -38,20 +40,31 @@ const DisplayData = (props) => {
         colors = colors.map(color => colorMap[color]);
 
         return (
-            <div>
-                <ul>{listItems}</ul>
-                <BarChart data={eMap} title={'Minutes Per Event'} />
-                <BarChart data={colorCounter} title={'Minutes Per Category'} colors={colors}/>
-                <DoughnutChart data={colorCounter} colors={colors}/>
-            </div>
+            <Container>
+                {
+                    listItems.length < 11 ? 
+                    <Container>
+                        <h3>Events</h3>
+                        <ul>{listItems}</ul> 
+                    </Container>
+                    :
+                    <></>
+                }
+                <Row>
+                    <BarChart data={colorCounter} title={'Minutes Per Category'} colors={colors}/>
+                </Row>
+                <Row>
+                    <BarChart data={eMap} title={'Minutes Per Event'} />
+                </Row>
+            </Container>
         );
     }
     
     return (
-        <div>
+        <Container>
             <h2>Data Aggregation</h2>
             {displayAggregations()}
-        </div>
+        </Container>
     );
 }
 
