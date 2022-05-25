@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/gcalviz/static/css/main.24ef582b.css",
+    "main.js": "/gcalviz/static/js/main.a99d7f00.js",
+    "static/js/787.970b0ffa.chunk.js": "/gcalviz/static/js/787.970b0ffa.chunk.js",
+    "index.html": "/gcalviz/index.html",
+    "main.24ef582b.css.map": "/gcalviz/static/css/main.24ef582b.css.map",
+    "main.a99d7f00.js.map": "/gcalviz/static/js/main.a99d7f00.js.map",
+    "787.970b0ffa.chunk.js.map": "/gcalviz/static/js/787.970b0ffa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.24ef582b.css",
+    "static/js/main.a99d7f00.js"
+  ]
+}
