@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/gcalviz/static/css/main.38be36b0.css",
-    "main.js": "/gcalviz/static/js/main.09f284cc.js",
+    "main.css": "/gcalviz/static/css/main.24ef582b.css",
+    "main.js": "/gcalviz/static/js/main.c64790a6.js",
     "static/js/787.970b0ffa.chunk.js": "/gcalviz/static/js/787.970b0ffa.chunk.js",
+    "static/media/gcal_logo.png": "/gcalviz/static/media/gcal_logo.0513effdf4b24dc2b5c0.png",
     "index.html": "/gcalviz/index.html",
-    "main.38be36b0.css.map": "/gcalviz/static/css/main.38be36b0.css.map",
-    "main.09f284cc.js.map": "/gcalviz/static/js/main.09f284cc.js.map",
+    "main.24ef582b.css.map": "/gcalviz/static/css/main.24ef582b.css.map",
+    "main.c64790a6.js.map": "/gcalviz/static/js/main.c64790a6.js.map",
     "787.970b0ffa.chunk.js.map": "/gcalviz/static/js/787.970b0ffa.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.38be36b0.css",
-    "static/js/main.09f284cc.js"
+    "static/css/main.24ef582b.css",
+    "static/js/main.c64790a6.js"
   ]
 }
